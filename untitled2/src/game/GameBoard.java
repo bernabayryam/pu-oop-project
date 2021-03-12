@@ -13,32 +13,51 @@ class GameBoard extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLocation(300, 200);
-        new GamePanel();
+         new GamePanel();
     }
+
 
 
     private static class GamePanel {
 
 
+        private PlayerATerritory[][] tileCollection;
+
         public void paint(Graphics g) {
             for (int row = 0; row < 7; row++) {
                 for (int col = 0; col < 9; col++) {
 
-                    g.setColor(Color.BLACK);
-                    g.drawRect(0, 0, 100, 100);
-
-                    Color tileColor = this.getTileColor(row, col);
-                    GameTile tile = new GameTile(row, col);
-                    tile.render(g);
+                    this.renderTiles(g, row, col);
+                    Color tileColor = this.getTileColor(col, row);
+                    this.getTileCollection();
 
                 }
 
             }
         }
 
+        private void getTileCollection() {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 9; j++) {
+                    this.tileCollection[i][j] = (new PlayerATerritory());
+                }
+            }
+
+            for (int i = 2; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    this.tileCollection[i][j] = (new Battlefield(i, j));
+                }
+            }
+
+            for (int i = 5; i <= 6; i++) {
+                for (int j = 0; j < 9; j++) {
+                    this.tileCollection[i][j] = (new PlayerBTerritory(i,j));
+                }
+            }
+        }
+
 
         private Color getTileColor(int row, int col) {
-
             boolean isRowEven = (row % 2 == 0);
             boolean isColEven = (col % 2 == 0);
 
@@ -49,5 +68,26 @@ class GameBoard extends JFrame {
             }
             return Color.GRAY;
         }
+
+        private void renderTiles(Graphics g, int row, int col) {
+
+
+        }
+
+        private static class PlayerATerritory {
+            public PlayerATerritory() {
+            }
+        }
+
+        private static class Battlefield extends PlayerATerritory {
+            public Battlefield(int i, int j) {
+                super();
+            }
+        }
+
+        private static class PlayerBTerritory extends PlayerATerritory {
+            private PlayerBTerritory(int i, int j) {
+            }
+        }
     }
-}
+    }
