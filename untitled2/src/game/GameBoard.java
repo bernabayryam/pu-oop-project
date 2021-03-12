@@ -14,6 +14,7 @@ class GameBoard extends JFrame {
         this.setVisible(true);
         this.setLocation(300, 200);
          new GamePanel();
+        Component mouseClick = new MouseClick();
     }
 
 
@@ -30,10 +31,13 @@ class GameBoard extends JFrame {
                     this.renderTiles(g, row, col);
                     Color tileColor = this.getTileColor(col, row);
                     this.getTileCollection();
-
+                    GameOver();
                 }
 
             }
+        }
+
+        private void GameOver() {
         }
 
         private void getTileCollection() {
@@ -55,7 +59,6 @@ class GameBoard extends JFrame {
                 }
             }
         }
-
 
         private Color getTileColor(int row, int col) {
             boolean isRowEven = (row % 2 == 0);
@@ -90,4 +93,7 @@ class GameBoard extends JFrame {
             }
         }
     }
+
+    private static class MouseClick extends Component {
     }
+}

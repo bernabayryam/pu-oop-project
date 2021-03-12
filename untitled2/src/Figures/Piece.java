@@ -5,7 +5,7 @@ import game.GameTile;
 
 import java.awt.*;
 
-public class Piece {
+public abstract class Piece {
     private static final int PIECE_SIZE = 50;
     protected int row;
     protected int col;
@@ -21,14 +21,44 @@ public class Piece {
     private int defence;
 
 
-    public void renderPiece(Graphics g, GameTile Tile) {
-        tile = Tile;
+    public Piece() {
+        this.row = row;
+        this.col = col;
+    }
 
-        int pieceX = this.col * GameTile.TILE_SIZE;
-        int pieceY = this.row * GameTile.TILE_SIZE;
+    public abstract void drawFigure(Graphics g);
 
-        g.setColor(this.color);
-        g.fillRect(pieceX, pieceY, PIECE_SIZE, PIECE_SIZE);
+    public void move(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getShield() {
+        return shield;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getAttackRange() {
+        return getAttackRange();
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public Color getColor() {
+        return color;
     }
 
 }

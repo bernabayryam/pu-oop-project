@@ -1,9 +1,13 @@
 package Figures;
 
+import game.GameTile;
+
 import java.awt.*;
 
 public class Elf extends Piece {
 
+
+    private GameTile Tile;
 
     public Elf(int row, int col, Color color) {
 
@@ -19,7 +23,15 @@ public class Elf extends Piece {
 
 
     }
+    public void drawFigure(Graphics g) {
+        int x = this.col * GameTile.TILE_SIZE;
+        int y = this.row * GameTile.TILE_SIZE;
 
+        g.setColor(this.color);
+        g.fillRect(x + 10,y + 10,50,50);
+        g.setColor(Color.BLACK);
+        g.drawString(" E ", x + 30, y + 40);
+    }
 
     }
 
