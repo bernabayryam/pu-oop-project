@@ -1,9 +1,9 @@
 package game;
-
 import javax.swing.*;
 import java.awt.*;
 
 class GameBoard extends JFrame {
+
 
     GameBoard() {
 
@@ -13,17 +13,20 @@ class GameBoard extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLocation(300, 200);
-         new GamePanel();
-        Component mouseClick = new MouseClick();
+        new GamePanel();
+
     }
-
-
 
     private static class GamePanel {
 
 
         private PlayerATerritory[][] tileCollection;
 
+        /**Method which draw the game board
+         *
+         *
+         * @param g
+         */
         public void paint(Graphics g) {
             for (int row = 0; row < 7; row++) {
                 for (int col = 0; col < 9; col++) {
@@ -55,7 +58,7 @@ class GameBoard extends JFrame {
 
             for (int i = 5; i <= 6; i++) {
                 for (int j = 0; j < 9; j++) {
-                    this.tileCollection[i][j] = (new PlayerBTerritory(i,j));
+                    this.tileCollection[i][j] = (new PlayerBTerritory(i, j));
                 }
             }
         }
@@ -73,9 +76,22 @@ class GameBoard extends JFrame {
         }
 
         private void renderTiles(Graphics g, int row, int col) {
+            if (this.isThereTile(row, col)) {
+                Tile t = (Tile)this.getTile(row, col);
+                t.drawTiles(g);
+            }
+        }
 
+        private Object getTile(int row, int col) {
+            return this.tileCollection;
 
         }
+
+        private boolean isThereTile(int row, int col) {
+            return this.tileCollection!= null;
+        }
+        
+
 
         private static class PlayerATerritory {
             public PlayerATerritory() {
@@ -84,6 +100,7 @@ class GameBoard extends JFrame {
 
         private static class Battlefield extends PlayerATerritory {
             public Battlefield(int i, int j) {
+
                 super();
             }
         }
@@ -92,8 +109,10 @@ class GameBoard extends JFrame {
             private PlayerBTerritory(int i, int j) {
             }
         }
-    }
 
-    private static class MouseClick extends Component {
+
+
+
+
     }
 }

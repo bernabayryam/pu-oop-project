@@ -61,4 +61,5 @@ public abstract class Piece {
         return color;
     }
 
+    public abstract boolean isMoveValid(int row, int col);
 }
