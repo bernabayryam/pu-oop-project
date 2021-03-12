@@ -34,5 +34,10 @@ public class Dwarf extends  Piece {
         g.setColor(Color.BLACK);
         g.drawString(" D ", x + 30, y + 40);
     }
+
+    @Override
+    public boolean isMoveValid(int row, int col) {
+        return false;
+    }
 }
 

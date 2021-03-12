@@ -1,4 +1,7 @@
 package game;
+import Figures.Piece;
+import sun.print.PathGraphics;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,9 +24,14 @@ class GameBoard extends JFrame {
 
 
         private PlayerATerritory[][] tileCollection;
+        private boolean GameOver;
+        private int Score;
+        private int eScore;
+        private Piece selectedPiece;
 
-        /**Method which draw the game board
-         *
+
+        /**
+         * Method which draw the game board
          *
          * @param g
          */
@@ -41,6 +49,21 @@ class GameBoard extends JFrame {
         }
 
         private void GameOver() {
+
+            PathGraphics g = null;
+            if (Score == 1200) {
+                g.setColor(Color.YELLOW);
+                g.setFont(new Font("YES", Font.ITALIC, 100));
+                g.drawString("WIN", 120, 2);
+            }
+            if (eScore == 1200) {
+                g.setColor(Color.RED);
+                g.setFont(new Font("YES", Font.ITALIC, 100));
+                g.drawString("WIN", 120, 2);
+            }
+        }
+
+        private void setColor(Color yellow) {
         }
 
         private void getTileCollection() {
@@ -52,13 +75,13 @@ class GameBoard extends JFrame {
 
             for (int i = 2; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
-                    this.tileCollection[i][j] = (new Battlefield(i, j));
+                    this.tileCollection[i][j] = (new Battlefield());
                 }
             }
 
             for (int i = 5; i <= 6; i++) {
                 for (int j = 0; j < 9; j++) {
-                    this.tileCollection[i][j] = (new PlayerBTerritory(i, j));
+                    this.tileCollection[i][j] = (new PlayerBTerritory());
                 }
             }
         }
@@ -77,7 +100,7 @@ class GameBoard extends JFrame {
 
         private void renderTiles(Graphics g, int row, int col) {
             if (this.isThereTile(row, col)) {
-                Tile t = (Tile)this.getTile(row, col);
+                Tile t = (Tile) this.getTile(row, col);
                 t.drawTiles(g);
             }
         }
@@ -88,9 +111,9 @@ class GameBoard extends JFrame {
         }
 
         private boolean isThereTile(int row, int col) {
-            return this.tileCollection!= null;
+            return this.tileCollection != null;
         }
 
 
-    }
+        }
     }

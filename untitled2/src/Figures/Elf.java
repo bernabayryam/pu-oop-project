@@ -33,6 +33,11 @@ public class Elf extends Piece {
         g.drawString(" E ", x + 30, y + 40);
     }
 
+    @Override
+    public boolean isMoveValid(int row, int col) {
+        return false;
     }
+
+}
 
 

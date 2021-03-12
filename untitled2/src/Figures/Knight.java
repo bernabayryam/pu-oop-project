@@ -28,4 +28,9 @@ public class Knight extends Piece {
         g.setColor(Color.BLACK);
         g.drawString(" K ", x + 30, y + 40);
     }
+
+    @Override
+    public boolean isMoveValid(int row, int col) {
+        return false;
+    }
 }
