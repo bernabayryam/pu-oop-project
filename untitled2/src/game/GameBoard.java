@@ -90,29 +90,7 @@ class GameBoard extends JFrame {
         private boolean isThereTile(int row, int col) {
             return this.tileCollection!= null;
         }
-        
-
-
-        private static class PlayerATerritory {
-            public PlayerATerritory() {
-            }
-        }
-
-        private static class Battlefield extends PlayerATerritory {
-            public Battlefield(int i, int j) {
-
-                super();
-            }
-        }
-
-        private static class PlayerBTerritory extends PlayerATerritory {
-            private PlayerBTerritory(int i, int j) {
-            }
-        }
-
-
-
 
 
     }
-}
+    }
